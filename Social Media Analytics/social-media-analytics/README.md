@@ -1,46 +1,125 @@
-# Getting Started with Create React App
+# RA2211003050026
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains the solutions for the Campus Hiring Evaluation - Frontend, consisting of two distinct problems implemented in separate folders. This README focuses on the Social Media Analytics problem, a responsive React-based frontend web application delivering real-time analytical insights from a social media platform's APIs.
 
-## Available Scripts
+## Folder Structure
 
-In the project directory, you can run:
+- **`social-media-analytics/`**: Contains the solution for the Social Media Analytics problem.
+- **`average-calculator/`**: Placeholder for the Average Calculator problem (not implemented here).
 
-### `npm start`
+## Social Media Analytics Problem
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Overview
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This project is a React-based frontend web application built with TypeScript, designed to provide real-time analytical insights from a social media platform's APIs. It features three pages:
 
-### `npm test`
+1. **Top Users**: Displays the top five users with the highest number of posts.
+2. **Trending Posts**: Shows posts with the maximum number of comments, including all posts tied for the highest comment count.
+3. **Feed**: Presents a real-time feed of posts, with the newest posts appearing at the top, dynamically updating based on API responses.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Technologies Used
 
-### `npm run build`
+- **React**: Frontend framework (version 18.x).
+- **TypeScript**: Preferred for type safety and maintainability.
+- **Material-UI**: CSS library for responsive and user-friendly styling.
+- **React Router**: For navigation between pages.
+- **Axios**: For making API requests with a 500ms timeout.
+- **Node.js**: Runtime environment (version 16.x or higher recommended).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Top Users**: Efficiently calculates and displays the top 5 users by post count using an object-based counting mechanism and sorting.
+- **Trending Posts**: Identifies posts with the highest comment counts by fetching and analyzing comments for all posts, handling ties appropriately.
+- **Feed**: Implements a polling mechanism (every 5 seconds) to simulate real-time updates, sorting posts by ID (assumed as a proxy for recency).
+- **Responsive Design**: Uses Material-UI for a consistent and user-focused experience across devices.
+- **Performance**: Ensures API calls respect the 500ms timeout limit, with graceful error handling.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
 
-### `npm run eject`
+- **Node.js**: Version 16.x or higher.
+- **npm**: Version 8.x or higher.
+- A valid authorization token from the test server's `/test/auth` endpoint (replace in `src/services/api.ts`).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Setup Instructions
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/<your-username>/RA2211003050026.git
+   cd RA2211003050026/social-media-analytics
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+   This installs all required packages, including:
+   - `react`, `react-dom`
+   - `react-router-dom`, `@types/react-router-dom`
+   - `@mui/material`, `@emotion/react`, `@emotion/styled`
+   - `axios`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. **Configure API Token**:
+   - Open `src/services/api.ts`.
+   - Replace `'Bearer your_access_token_here'` with your actual token obtained from the test server's authorization API.
 
-## Learn More
+4. **Run the Application**:
+   ```bash
+   npm start
+   ```
+   - The app will launch at `http://localhost:3000`.
+   - Use the navigation bar to switch between pages: `/top-users`, `/trending-posts`, and `/feed`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Project Structure
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+social-media-analytics/
+├── src/
+│   ├── components/
+│   │   ├── TopUsers.tsx        # Component for displaying top users
+│   │   ├── TrendingPosts.tsx   # Component for trending posts
+│   │   └── Feed.tsx            # Component for real-time feed
+│   ├── pages/
+│   │   ├── TopUsersPage.tsx    # Page wrapper for TopUsers
+│   │   ├── TrendingPostsPage.tsx # Page wrapper for TrendingPosts
+│   │   └── FeedPage.tsx        # Page wrapper for Feed
+│   ├── services/
+│   │   └── api.ts              # API client with Axios configuration
+│   ├── App.tsx                 # Main app component with routing
+│   ├── index.tsx               # Entry point with React 18 root API
+│   └── styles.css              # Global CSS styles
+├── package.json                # Project dependencies and scripts
+└── README.md                   # This file
+```
+
+### Screenshots
+
+- **Desktop View**:
+  - *Top Users*: [Insert screenshot path or description]
+  - *Trending Posts*: [Insert screenshot path or description]
+  - *Feed*: [Insert screenshot path or description]
+- **Mobile View**:
+  - *Top Users*: [Insert screenshot path or description]
+  - *Trending Posts*: [Insert screenshot path or description]
+  - *Feed*: [Insert screenshot path or description]
+
+*Note*: Screenshots are not included here but should be captured and placed in the repository (e.g., `screenshots/` folder) for submission.
+
+### Development Notes
+
+- **Coding Standards**: Follows production-grade practices with proper naming conventions, folder organization, and comments for readability.
+- **API Integration**: Exclusively uses the test server APIs (e.g., `/users`, `/users/{id}/posts`, `/rests/{postId}/roments`) without third-party dependencies.
+- **Real-Time Updates**: The Feed page polls the API every 5 seconds; adjust the interval in `src/components/Feed.tsx` if needed.
+- **Error Handling**: Gracefully handles API errors by defaulting to zero counts or skipping failed requests.
+
+### Submission Guidelines
+
+- **Repository**: This is a public GitHub repository named `RA2211003050026`.
+- **Commits**: Regular commits were made at logical milestones (e.g., component creation, routing setup, API integration).
+- **Screenshots**: Include desktop and mobile views for each page in the repository.
+- **Time**: Completed within the allotted 1.5 hours, with no additional time for pushing code.
+
+### Troubleshooting
+
+- **Compilation Errors**: Ensure all dependencies are installed and the API token is valid.
+- **API Timeout**: If requests exceed 500ms, they are ignored as per the Axios configuration.
+- **Routing Issues**: Verify `react-router-dom` is installed and routes are correctly defined in `App.tsx`.
